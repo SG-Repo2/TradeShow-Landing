@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #456da7;
+    overflow: hidden;
+  }
+  
+  /* Fluid typography based on viewport width */
+  @media (max-width: 480px) {
+    html {
+      font-size: 14px;
+    }
+  }
+  
+  @media (min-width: 481px) and (max-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+  
+  @media (min-width: 769px) and (max-width: 1440px) {
+    html {
+      font-size: 18px;
+    }
+  }
+  
+  @media (min-width: 1441px) {
+    html {
+      font-size: 20px;
+    }
+  }

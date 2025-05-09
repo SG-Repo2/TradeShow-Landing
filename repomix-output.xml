@@ -1,0 +1,867 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+4. Repository files, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+<additional_info>
+
+</additional_info>
+
+</file_summary>
+
+<directory_structure>
+src/
+  components/
+    Content/
+      Content.module.css
+      Content.tsx
+    Logo/
+      Logo.module.css
+      Logo.tsx
+    Menu/
+      Menu.module.css
+      Menu.tsx
+    MenuBox/
+      MenuBox.module.css
+      MenuBox.tsx
+  hooks/
+    useMediaQuery.ts
+  pages/
+    Careers/
+      Careers.module.css
+      Careers.tsx
+    Home/
+      Home.module.css
+      Home.tsx
+  routes/
+    AppRoutes.tsx
+  styles/
+    global.css
+  App.tsx
+  main.tsx
+.gitignore
+index.html
+package.json
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="src/components/Content/Content.module.css">
+.content {
+    margin-top: 20px;
+    padding: 20px;
+    width: 90%;
+    max-width: 1080px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .contentSection {
+    display: none;
+  }
+  
+  .visible {
+    display: block;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .content {
+      padding: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .content {
+      padding: 10px;
+      margin-top: 15px;
+    }
+  }
+</file>
+
+<file path="src/components/Content/Content.tsx">
+import React from 'react';
+import styles from './Content.module.css';
+
+interface ContentProps {
+  activeSection: string | null;
+}
+
+const Content: React.FC<ContentProps> = ({ activeSection }) => {
+  if (!activeSection) return null;
+
+  return (
+    <div className={styles.content}>
+      <div 
+        id="section1" 
+        className={`${styles.contentSection} ${activeSection === 'section1' ? styles.visible : ''}`}
+      >
+        Content for Knowledge Library
+      </div>
+      <div 
+        id="section2" 
+        className={`${styles.contentSection} ${activeSection === 'section2' ? styles.visible : ''}`}
+      >
+        Content for Interactive Files
+      </div>
+      <div 
+        id="section3" 
+        className={`${styles.contentSection} ${activeSection === 'section3' ? styles.visible : ''}`}
+      >
+        Content for Join Us Form
+      </div>
+      <div 
+        id="section4" 
+        className={`${styles.contentSection} ${activeSection === 'section4' ? styles.visible : ''}`}
+      >
+        Content for Demo
+      </div>
+      <div 
+        id="section5" 
+        className={`${styles.contentSection} ${activeSection === 'section5' ? styles.visible : ''}`}
+      >
+        Content for Static Page 1
+      </div>
+      <div 
+        id="section6" 
+        className={`${styles.contentSection} ${activeSection === 'section6' ? styles.visible : ''}`}
+      >
+        Content for Static Page 2
+      </div>
+    </div>
+  );
+};
+
+export default Content;
+</file>
+
+<file path="src/components/Logo/Logo.module.css">
+.logo {
+    width: 100%;
+    background-color: white;
+    color: #333;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+  }
+  
+  .logo img {
+    max-height: 60px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .logo {
+      padding: 15px 0;
+      margin-bottom: 20px;
+    }
+    
+    .logo img {
+      max-height: 40px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .logo {
+      padding: 10px 0;
+      margin-bottom: 15px;
+    }
+    
+    .logo img {
+      max-height: 30px;
+    }
+  }
+</file>
+
+<file path="src/components/Logo/Logo.tsx">
+import React from 'react';
+import styles from './Logo.module.css';
+import hydroLogo from '../../assets/hydroLogo.gif';
+
+const Logo: React.FC = () => {
+  return (
+    <div className={styles.logo}>
+      <img src={hydroLogo} alt="Hydro Logo" />
+    </div>
+  );
+};
+
+export default Logo;
+</file>
+
+<file path="src/components/Menu/Menu.module.css">
+.menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    width: 90%;
+    max-width: 1080px;
+    justify-items: center;
+    margin-top: 20px;
+  }
+  
+  .overlayImage {
+    max-width: 80%;
+    max-height: 80%;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .menu {
+      gap: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .menu {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+  }
+</file>
+
+<file path="src/components/Menu/Menu.tsx">
+import React from 'react';
+import styles from './Menu.module.css';
+import MenuBox from '../MenuBox/MenuBox';
+import impelLogo from '../../assets/impelLogo.png';
+import hydroUBlue from '../../assets/hydroUBlue.png';
+import centaurLogo from '../../assets/centaurLogo.png';
+import energyLogo from '../../assets/energyLogo.png';
+import { useNavigate } from 'react-router-dom';
+
+const Menu: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleBoxClick = (target: string) => {
+    switch (target) {
+      case 'section1':
+        window.location.href = 'https://marketing.hydroinc.com/power_library';
+        break;
+      case 'section2':
+        window.location.href = './impel/index.html';
+        break;
+      case 'section3':
+        window.location.href = 'https://external.university.hydroinc.com/index';
+        break;
+      case 'section4':
+        window.location.href = 'https://hydroinc.com/centaur-copy/';
+        break;
+      case 'section5':
+        navigate('/careers');
+        break;
+      case 'section6':
+        window.location.href = 'https://marketing.hydroinc.com/energyedge';
+        break;
+      default:
+        break;
+    }
+  };
+
+  return (
+    <div className={styles.menu}>
+      <MenuBox target="section1" onClick={handleBoxClick}>
+        Knowledge Library
+      </MenuBox>
+      <MenuBox target="section2" onClick={handleBoxClick} isFlashing={true}>
+        <img src={impelLogo} alt="Impel" className={styles.overlayImage} />
+      </MenuBox>
+      <MenuBox target="section3" onClick={handleBoxClick}>
+        <img src={hydroUBlue} alt="Hydro University Logo" className={styles.overlayImage} />
+      </MenuBox>
+      <MenuBox target="section4" onClick={handleBoxClick}>
+        <img src={centaurLogo} alt="Centaur" className={styles.overlayImage} />
+      </MenuBox>
+      <MenuBox target="section5" onClick={handleBoxClick}>
+        Careers
+      </MenuBox>
+      <MenuBox target="section6" onClick={handleBoxClick}>
+        <img src={energyLogo} alt="Energy Edge" className={styles.overlayImage} />
+      </MenuBox>
+    </div>
+  );
+};
+
+export default Menu;
+</file>
+
+<file path="src/components/MenuBox/MenuBox.module.css">
+.box {
+    background-color: white;
+    padding: 0;
+    text-align: center;
+    font-size: 24px;
+    font-family: "Monaco", monospace;
+    color: #456da7;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .box img {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10%;
+  }
+  
+  .box:hover {
+    background-color: #3b5b9d;
+    transform: translateY(-5px) rotate(-2deg);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .box:hover img {
+    filter: brightness(1.2);
+  }
+  
+  /* Flashing text animation */
+  @keyframes flash {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+  
+  .flashingText {
+    animation: flash 2s infinite;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1440px) {
+    .box {
+      height: 180px;
+      width: 180px;
+      font-size: 22px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .box {
+      height: 150px;
+      width: 150px;
+      font-size: 18px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .box {
+      height: 120px;
+      width: 120px;
+      font-size: 16px;
+    }
+  }
+</file>
+
+<file path="src/components/MenuBox/MenuBox.tsx">
+import React from 'react';
+import styles from './MenuBox.module.css';
+
+interface MenuBoxProps {
+  target: string;
+  onClick: (target: string) => void;
+  children: React.ReactNode;
+  isFlashing?: boolean;
+}
+
+const MenuBox: React.FC<MenuBoxProps> = ({ target, onClick, children, isFlashing = false }) => {
+  const handleClick = () => {
+    onClick(target);
+  };
+
+  return (
+    <div 
+      className={`${styles.box} ${isFlashing ? styles.flashingText : ''}`} 
+      onClick={handleClick}
+      data-target={target}
+    >
+      {children}
+    </div>
+  );
+};
+
+export default MenuBox;
+</file>
+
+<file path="src/hooks/useMediaQuery.ts">
+import { useState, useEffect } from 'react';
+
+// Custom hook for responsive design
+const useMediaQuery = (query: string): boolean => {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    if (media.matches !== matches) {
+      setMatches(media.matches);
+    }
+
+    const listener = (): void => setMatches(media.matches);
+    media.addEventListener('change', listener);
+    
+    return () => media.removeEventListener('change', listener);
+  }, [matches, query]);
+
+  return matches;
+};
+
+// Predefined breakpoints for consistency
+export const breakpoints = {
+  phone: '(max-width: 480px)',
+  tablet: '(min-width: 481px) and (max-width: 768px)',
+  laptop: '(min-width: 769px) and (max-width: 1440px)',
+  desktop: '(min-width: 1441px)',
+};
+
+export default useMediaQuery;
+</file>
+
+<file path="src/pages/Careers/Careers.module.css">
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    background-color: white;
+  }
+  
+  h1 {
+    font-size: 32px;
+    color: #003366;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 18px;
+    color: #333;
+    max-width: 80%;
+    margin-bottom: 40px;
+  }
+  
+  img {
+    width: 300px;
+    height: auto;
+    margin-bottom: 30px;
+  }
+  
+  .backButton {
+    padding: 10px 20px;
+    background-color: #456da7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .backButton:hover {
+    background-color: #3b5b9d;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1440px) {
+    h1 {
+      font-size: 28px;
+    }
+    
+    p {
+      font-size: 16px;
+    }
+    
+    img {
+      width: 250px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 24px;
+    }
+    
+    p {
+      font-size: 14px;
+      max-width: 90%;
+    }
+    
+    img {
+      width: 200px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    
+    p {
+      font-size: 12px;
+      max-width: 95%;
+      margin-bottom: 20px;
+    }
+    
+    img {
+      width: 150px;
+      margin-bottom: 20px;
+    }
+    
+    .backButton {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+  }
+</file>
+
+<file path="src/pages/Careers/Careers.tsx">
+import React from 'react';
+import styles from './Careers.module.css';
+import tradeShowQR from '../../assets/tradeShowQR.png';
+import { useNavigate } from 'react-router-dom';
+
+const Careers: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate('/');
+  };
+
+  return (
+    <div className={styles.container}>
+      <h1>You've got big dreams. We've got big opportunities.</h1>
+      <p>
+        Join the largest independent pump rebuilder in the world. Become part of the new generation 
+        of industry experts who keep vital systems operating at maximum efficiency and peak reliability. 
+        Pursue a challenging and rewarding career where you can make a difference.
+      </p>
+      <img src={tradeShowQR} alt="QR Code" />
+      <button className={styles.backButton} onClick={handleBack}>
+        Back to Home
+      </button>
+    </div>
+  );
+};
+
+export default Careers;
+</file>
+
+<file path="src/pages/Home/Home.module.css">
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-bottom: 30px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .container {
+      padding-bottom: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding-bottom: 15px;
+    }
+  }
+</file>
+
+<file path="src/pages/Home/Home.tsx">
+import React, { useState } from 'react';
+import styles from './Home.module.css';
+import Logo from '../../components/Logo/Logo';
+import Menu from '../../components/Menu/Menu';
+import Content from '../../components/Content/Content';
+
+const Home: React.FC = () => {
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+
+  // This function would be passed down to children if needed
+  // Currently, Menu component handles navigation directly
+  const handleSectionChange = (section: string) => {
+    setActiveSection(section);
+  };
+
+  return (
+    <div className={styles.container}>
+      <Logo />
+      <Menu />
+      {activeSection && <Content activeSection={activeSection} />}
+    </div>
+  );
+};
+
+export default Home;
+</file>
+
+<file path="src/routes/AppRoutes.tsx">
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Home from '../pages/Home/Home';
+import Careers from '../pages/Careers/Careers';
+
+const AppRoutes: React.FC = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/careers" element={<Careers />} />
+    </Routes>
+  );
+};
+
+export default AppRoutes;
+</file>
+
+<file path="src/styles/global.css">
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #456da7;
+    overflow: hidden;
+  }
+  
+  /* Fluid typography based on viewport width */
+  @media (max-width: 480px) {
+    html {
+      font-size: 14px;
+    }
+  }
+  
+  @media (min-width: 481px) and (max-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+  
+  @media (min-width: 769px) and (max-width: 1440px) {
+    html {
+      font-size: 18px;
+    }
+  }
+  
+  @media (min-width: 1441px) {
+    html {
+      font-size: 20px;
+    }
+  }
+</file>
+
+<file path="src/App.tsx">
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './routes/AppRoutes';
+
+const App: React.FC = () => {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  );
+};
+
+export default App;
+</file>
+
+<file path="src/main.tsx">
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './styles/global.css';
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);
+</file>
+
+<file path=".gitignore">
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+</file>
+
+<file path="index.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Trade Show Interface</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
+</file>
+
+<file path="package.json">
+{
+    "name": "trade-show-app",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+      "dev": "vite",
+      "build": "tsc && vite build",
+      "preview": "vite preview",
+      "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    },
+    "dependencies": {
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "react-router-dom": "^6.15.0"
+    },
+    "devDependencies": {
+      "@types/react": "^18.2.15",
+      "@types/react-dom": "^18.2.7",
+      "@typescript-eslint/eslint-plugin": "^6.0.0",
+      "@typescript-eslint/parser": "^6.0.0",
+      "@vitejs/plugin-react": "^4.0.3",
+      "eslint": "^8.45.0",
+      "eslint-plugin-react-hooks": "^4.6.0",
+      "eslint-plugin-react-refresh": "^0.4.3",
+      "typescript": "^5.0.2",
+      "vite": "^4.4.5"
+    }
+  }
+</file>
+
+<file path="tsconfig.json">
+{
+    "compilerOptions": {
+      "target": "ES2020",
+      "useDefineForClassFields": true,
+      "lib": ["ES2020", "DOM", "DOM.Iterable"],
+      "module": "ESNext",
+      "skipLibCheck": true,
+      "moduleResolution": "bundler",
+      "allowImportingTsExtensions": true,
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "noEmit": true,
+      "jsx": "react-jsx",
+      "strict": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noFallthroughCasesInSwitch": true,
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["./src/*"]
+      }
+    },
+    "include": ["src"],
+    "references": [{ "path": "./tsconfig.node.json" }]
+  }
+</file>
+
+<file path="tsconfig.node.json">
+{
+    "compilerOptions": {
+      "composite": true,
+      "skipLibCheck": true,
+      "module": "ESNext",
+      "moduleResolution": "bundler",
+      "allowSyntheticDefaultImports": true
+    },
+    "include": ["vite.config.ts"]
+  }
+</file>
+
+<file path="vite.config.ts">
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
+});
+</file>
+
+</files>

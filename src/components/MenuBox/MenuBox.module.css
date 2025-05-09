@@ -1,0 +1,70 @@
+.box {
+    background-color: white;
+    padding: 0;
+    text-align: center;
+    font-size: 24px;
+    font-family: "Monaco", monospace;
+    color: #456da7;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .box img {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10%;
+  }
+  
+  .box:hover {
+    background-color: #3b5b9d;
+    transform: translateY(-5px) rotate(-2deg);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .box:hover img {
+    filter: brightness(1.2);
+  }
+  
+  /* Flashing text animation */
+  @keyframes flash {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+  
+  .flashingText {
+    animation: flash 2s infinite;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1440px) {
+    .box {
+      height: 180px;
+      width: 180px;
+      font-size: 22px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .box {
+      height: 150px;
+      width: 150px;
+      font-size: 18px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .box {
+      height: 120px;
+      width: 120px;
+      font-size: 16px;
+    }
+  }
