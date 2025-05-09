@@ -6,14 +6,19 @@ import hydroUBlue from '../../assets/hydroUBlue.png';
 import centaurLogo from '../../assets/centaurLogo.png';
 import energyLogo from '../../assets/energyLogo.png';
 import { useNavigate } from 'react-router-dom';
+import coleherne from '../../assets/coleherneLogo.png';
 
-const Menu: React.FC = () => {
+interface MenuProps {
+  onSection1Click: () => void;
+}
+
+const Menu: React.FC<MenuProps> = ({ onSection1Click }) => {
   const navigate = useNavigate();
 
   const handleBoxClick = (target: string) => {
     switch (target) {
       case 'section1':
-        window.location.href = 'https://marketing.hydroinc.com/power_library';
+        onSection1Click();
         break;
       case 'section2':
         navigate('/impel'); // Changed from direct HTML reference to React route
@@ -38,7 +43,7 @@ const Menu: React.FC = () => {
   return (
     <div className={styles.menu}>
       <MenuBox target="section1" onClick={handleBoxClick}>
-        Knowledge Library
+        <img src={coleherne} alt="Hydro University Logo" className={styles.overlayImage} />
       </MenuBox>
       <MenuBox target="section2" onClick={handleBoxClick} isFlashing={true}>
         <img src={impelLogo} alt="Impel" className={styles.overlayImage} />

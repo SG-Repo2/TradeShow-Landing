@@ -8,14 +8,14 @@ const cardData = [
     title: 'Manual',
     description:
       "The IMPEL manual provides animated step-by-step instructions for installation and maintenance, including embedded tips from Hydro's experienced field service professionals.",
-    href: './7060_pump.htm',
+    href: '/7060_pump.htm',
   },
   {
     key: 'catalog',
     title: 'Catalog',
     description:
       'The IMPEL catalog is an interactive tool to explore the pump construction and bill of materials.',
-    href: './IMPEL_OH1_3196_CT.htm',
+    href: '/IMPEL_OH1_3196_CT.htm',
   },
 ];
 
