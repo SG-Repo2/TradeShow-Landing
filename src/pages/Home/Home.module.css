@@ -76,3 +76,16 @@
     max-height: 150px;
     margin-bottom: 10px;
   }
+
+  .ecosystemContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 15px 0;
+  }
+
+  .ecosystemImage {
+    width: 90%;
+    max-height: 180px;
+    object-fit: contain;
+  }

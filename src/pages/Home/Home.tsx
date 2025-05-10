@@ -9,15 +9,14 @@ import Modal from '../../components/Modal/Modal';
 
 // Import correct images from assets
 import coleherneLogo from '../../assets/coleherneLogo.png';
-import impelLogo from '../../assets/impelLogo.png';
-import hydroUBlue from '../../assets/hydroUBlue.png';
-import centaurLogo from '../../assets/centaurLogo.png';
 import careers from '../../assets/careers.png';
 import energyLogo from '../../assets/energyLogo.png';
 import tradeShowQR from '../../assets/tradeShowQR.png';
+import centaurEcosystem from '../../assets/centaurEcosystem.png';
+import hydroULogo from '../../assets/hydroU.png';
 
 const Home: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [activeSection] = useState<string | null>(null);
   
   // State for all modals
   const [showSection1Modal, setShowSection1Modal] = useState(false);
@@ -72,13 +71,21 @@ const Home: React.FC = () => {
       {showSection3Modal && (
         <Modal onClose={() => setShowSection3Modal(false)} compact={true}>
           <h2>Hydro University</h2>
-          <div className={styles.modalImages}>
-            <img src={hydroUBlue} alt="Hydro University" className={styles.contentImage} />
+          
+          {/* Primary focus on the Hydro University logo */}
+          <div className={styles.ecosystemContainer}>
+            <img 
+              src={hydroULogo}
+              alt="Hydro University" 
+              className={styles.ecosystemImage} 
+            />
           </div>
-          <p>Access training materials and certification courses</p>
+          
+          <p>With over 50 years of experience in the pump industry, Hydro offers a wide range of technical webinars, e-learning, and in-person seminars for end-users who want to learn more about pumping technology to build their skills within the field.</p>
+          
           <div className={styles.qrCodeContainer}>
             <img src={tradeShowQR} alt="QR Code" className={styles.qrImage} />
-            <p>Scan to visit Hydro University</p>
+            <p>Scan to access Hydro University</p>
           </div>
         </Modal>
       )}
@@ -87,13 +94,21 @@ const Home: React.FC = () => {
       {showSection4Modal && (
         <Modal onClose={() => setShowSection4Modal(false)} compact={true}>
           <h2>Centaur Platform</h2>
-          <div className={styles.modalImages}>
-            <img src={centaurLogo} alt="Centaur" className={styles.contentImage} />
+          
+          {/* Primary focus on the ecosystem diagram */}
+          <div className={styles.ecosystemContainer}>
+            <img 
+              src={centaurEcosystem}
+              alt="Centaur Ecosystem" 
+              className={styles.ecosystemImage} 
+            />
           </div>
-          <p>Access advanced diagnostics and monitoring tools</p>
+          
+          <p>Complete monitoring solution with sensors, gateways, cloud analytics, and expert analysis for critical rotating equipment.</p>
+          
           <div className={styles.qrCodeContainer}>
             <img src={tradeShowQR} alt="QR Code" className={styles.qrImage} />
-            <p>Scan to visit Centaur Platform</p>
+            <p>Scan to access Centaur Platform</p>
           </div>
         </Modal>
       )}
