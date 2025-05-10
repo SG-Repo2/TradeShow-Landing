@@ -4,12 +4,12 @@ import styles from './Modal.module.css';
 interface ModalProps {
   onClose: () => void;
   children: React.ReactNode;
-  // later add props for button labels & callbacks
+  compact?: boolean; // New prop for compact modal style
 }
 
-const Modal: React.FC<ModalProps> = ({ onClose, children }) => (
+const Modal: React.FC<ModalProps> = ({ onClose, children, compact = false }) => (
   <div className={styles.overlay} onClick={onClose}>
-    <div className={styles.modal} onClick={e => e.stopPropagation()}>
+    <div className={compact ? styles.compactModal : styles.modal} onClick={e => e.stopPropagation()}>
       <button className={styles.closeButton} onClick={onClose}>×</button>
       {children}
     </div>

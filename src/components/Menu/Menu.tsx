@@ -15,13 +15,17 @@ interface MenuProps {
   onSection2Click?: () => void; 
   onSection3Click?: () => void;
   onSection4Click?: () => void;
+  onSection5Click?: () => void;
+  onSection6Click?: () => void;
 }
 
 const Menu: React.FC<MenuProps> = ({ 
   onSection1Click,
   onSection2Click,
   onSection3Click,
-  onSection4Click
+  onSection4Click,
+  onSection5Click,
+  onSection6Click
 }) => {
   const navigate = useNavigate();
 
@@ -56,10 +60,18 @@ const Menu: React.FC<MenuProps> = ({
         }
         break;
       case 'section5':
-        navigate('/careers');
+        if (onSection5Click) {
+          onSection5Click();
+        } else {
+          navigate('/careers');
+        }
         break;
       case 'section6':
-        window.location.href = 'https://marketing.hydroinc.com/energyedge';
+        if (onSection6Click) {
+          onSection6Click();
+        } else {
+          window.location.href = 'https://marketing.hydroinc.com/energyedge';
+        }
         break;
       default:
         break;

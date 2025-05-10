@@ -12,15 +12,19 @@ import coleherneLogo from '../../assets/coleherneLogo.png';
 import impelLogo from '../../assets/impelLogo.png';
 import hydroUBlue from '../../assets/hydroUBlue.png';
 import centaurLogo from '../../assets/centaurLogo.png';
+import careers from '../../assets/careers.png';
+import energyLogo from '../../assets/energyLogo.png';
+import tradeShowQR from '../../assets/tradeShowQR.png';
 
 const Home: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   
-  // State for all four modals
+  // State for all modals
   const [showSection1Modal, setShowSection1Modal] = useState(false);
-  const [showSection2Modal, setShowSection2Modal] = useState(false);
   const [showSection3Modal, setShowSection3Modal] = useState(false);
   const [showSection4Modal, setShowSection4Modal] = useState(false);
+  const [showSection5Modal, setShowSection5Modal] = useState(false);
+  const [showSection6Modal, setShowSection6Modal] = useState(false);
   
   const navigate = useNavigate();
 
@@ -33,13 +37,15 @@ const Home: React.FC = () => {
       <Logo />
       <Menu 
         onSection1Click={() => setShowSection1Modal(true)}
-        onSection2Click={() => setShowSection2Modal(true)}
+        onSection2Click={() => navigate('/impel')}
         onSection3Click={() => setShowSection3Modal(true)}
         onSection4Click={() => setShowSection4Modal(true)}
+        onSection5Click={() => setShowSection5Modal(true)}
+        onSection6Click={() => setShowSection6Modal(true)}
       />
       {activeSection && <Content activeSection={activeSection} />}
 
-      {/* Section 1 Modal */}
+      {/* Section 1 Modal - Knowledge Library (Menu Modal) */}
       {showSection1Modal && (
         <Modal onClose={() => setShowSection1Modal(false)}>
           <h2>Knowledge Library</h2>
@@ -62,71 +68,62 @@ const Home: React.FC = () => {
         </Modal>
       )}
 
-      {/* Section 2 Modal */}
-      {showSection2Modal && (
-        <Modal onClose={() => setShowSection2Modal(false)}>
-          <h2>Interactive Platform</h2>
-          <img src={impelLogo} alt="Impel Platform" className={styles.modalImage} />
-          <p>Access interactive maintenance procedures and documentation...</p>
-          <div className={styles.buttons}>
-            <button className={styles.button} onClick={() => navigate('/impel')}>
-              Launch IMPEL
-            </button>
-            <button className={styles.button}>
-              Browse Catalog
-            </button>
-            <button className={styles.button}>
-              Training Materials
-            </button>
-            <button className={styles.button}>
-              Request Support
-            </button>
-          </div>
-        </Modal>
-      )}
-
-      {/* Section 3 Modal */}
+      {/* Section 3 Modal - Hydro University (Compact Modal with QR) */}
       {showSection3Modal && (
-        <Modal onClose={() => setShowSection3Modal(false)}>
+        <Modal onClose={() => setShowSection3Modal(false)} compact={true}>
           <h2>Hydro University</h2>
-          <img src={hydroUBlue} alt="Hydro University" className={styles.modalImage} />
-          <p>Access training materials and certification courses...</p>
-          <div className={styles.buttons}>
-            <button className={styles.button} onClick={() => window.location.href = 'https://external.university.hydroinc.com/index'}>
-              Access Courses
-            </button>
-            <button className={styles.button}>
-              View Certifications
-            </button>
-            <button className={styles.button}>
-              Learning Paths
-            </button>
-            <button className={styles.button}>
-              Request Training
-            </button>
+          <div className={styles.modalImages}>
+            <img src={hydroUBlue} alt="Hydro University" className={styles.contentImage} />
+          </div>
+          <p>Access training materials and certification courses</p>
+          <div className={styles.qrCodeContainer}>
+            <img src={tradeShowQR} alt="QR Code" className={styles.qrImage} />
+            <p>Scan to visit Hydro University</p>
           </div>
         </Modal>
       )}
 
-      {/* Section 4 Modal */}
+      {/* Section 4 Modal - Centaur Platform (Compact Modal with QR) */}
       {showSection4Modal && (
-        <Modal onClose={() => setShowSection4Modal(false)}>
+        <Modal onClose={() => setShowSection4Modal(false)} compact={true}>
           <h2>Centaur Platform</h2>
-          <img src={centaurLogo} alt="Centaur" className={styles.modalImage} />
-          <p>Access advanced diagnostics and monitoring tools...</p>
-          <div className={styles.buttons}>
-            <button className={styles.button} onClick={() => window.location.href = 'https://hydroinc.com/centaur-copy/'}>
-              Launch Centaur
-            </button>
-            <button className={styles.button}>
-              View Reports
-            </button>
-            <button className={styles.button}>
-              System Status
-            </button>
-            <button className={styles.button}>
-              Configuration
-            </button>
+          <div className={styles.modalImages}>
+            <img src={centaurLogo} alt="Centaur" className={styles.contentImage} />
+          </div>
+          <p>Access advanced diagnostics and monitoring tools</p>
+          <div className={styles.qrCodeContainer}>
+            <img src={tradeShowQR} alt="QR Code" className={styles.qrImage} />
+            <p>Scan to visit Centaur Platform</p>
+          </div>
+        </Modal>
+      )}
+
+      {/* Section 5 Modal - Careers (Compact Modal with QR) */}
+      {showSection5Modal && (
+        <Modal onClose={() => setShowSection5Modal(false)} compact={true}>
+          <h2>Careers</h2>
+          <div className={styles.modalImages}>
+            <img src={careers} alt="Careers" className={styles.contentImage} />
+          </div>
+          <p>Explore career opportunities with Hydro</p>
+          <div className={styles.qrCodeContainer}>
+            <img src={tradeShowQR} alt="QR Code" className={styles.qrImage} />
+            <p>Scan to view job openings</p>
+          </div>
+        </Modal>
+      )}
+
+      {/* Section 6 Modal - Energy Edge (Compact Modal with QR) */}
+      {showSection6Modal && (
+        <Modal onClose={() => setShowSection6Modal(false)} compact={true}>
+          <h2>Energy Edge</h2>
+          <div className={styles.modalImages}>
+            <img src={energyLogo} alt="Energy Edge" className={styles.contentImage} />
+          </div>
+          <p>Learn about our energy efficiency solutions</p>
+          <div className={styles.qrCodeContainer}>
+            <img src={tradeShowQR} alt="QR Code" className={styles.qrImage} />
+            <p>Scan for Energy Edge information</p>
           </div>
         </Modal>
       )}
