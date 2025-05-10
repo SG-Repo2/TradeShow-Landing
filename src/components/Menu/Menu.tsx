@@ -7,9 +7,9 @@ import centaurLogo from '../../assets/centaurLogo.png';
 import energyLogo from '../../assets/energyLogo.png';
 import { useNavigate } from 'react-router-dom';
 import coleherne from '../../assets/coleherneLogo.png';
-
+import careers from '../../assets/careers.png';
 interface MenuProps {
-  onSection1Click: () => void;
+  onSection1Click?: () => void; // Added prop for section1 modal
 }
 
 const Menu: React.FC<MenuProps> = ({ onSection1Click }) => {
@@ -18,7 +18,11 @@ const Menu: React.FC<MenuProps> = ({ onSection1Click }) => {
   const handleBoxClick = (target: string) => {
     switch (target) {
       case 'section1':
-        onSection1Click();
+        if (onSection1Click) {
+          onSection1Click();
+        } else {
+          window.location.href = '/oman-tablet-app/index.html';
+        }
         break;
       case 'section2':
         navigate('/impel'); // Changed from direct HTML reference to React route
@@ -55,7 +59,7 @@ const Menu: React.FC<MenuProps> = ({ onSection1Click }) => {
         <img src={centaurLogo} alt="Centaur" className={styles.overlayImage} />
       </MenuBox>
       <MenuBox target="section5" onClick={handleBoxClick}>
-        Careers
+      <img src={careers} alt="Careers" className={styles.overlayImage} />
       </MenuBox>
       <MenuBox target="section6" onClick={handleBoxClick}>
         <img src={energyLogo} alt="Energy Edge" className={styles.overlayImage} />
