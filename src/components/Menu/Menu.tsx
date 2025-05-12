@@ -1,14 +1,15 @@
-// src/components/Menu/Menu.tsx
 import React from 'react';
 import styles from './Menu.module.css';
 import MenuBox from '../MenuBox/MenuBox';
-import impelLogo from '../../assets/impelLogo.png';
-import hydroUBlue from '../../assets/hydroUBlue.png';
-import centaurLogo from '../../assets/centaurLogo.png';
-import energyLogo from '../../assets/energyLogo.png';
 import { useNavigate } from 'react-router-dom';
-import coleherne from '../../assets/coleherneLogo.png';
-import careers from '../../assets/careers.png';
+import { 
+  coleherneLogo, 
+  impelLogo, 
+  hydroUBlue, 
+  centaurLogo, 
+  coPilotLogo, 
+  energyLogo 
+} from '../../assets';
 
 interface MenuProps {
   onSection1Click?: () => void;
@@ -63,7 +64,7 @@ const Menu: React.FC<MenuProps> = ({
         if (onSection5Click) {
           onSection5Click();
         } else {
-          navigate('/careers');
+          console.log('Opening CoPilot modal');
         }
         break;
       case 'section6':
@@ -78,27 +79,65 @@ const Menu: React.FC<MenuProps> = ({
     }
   };
 
+  const menuItems = [
+    {
+      id: 'section1',
+      image: coleherneLogo,
+      alt: 'Knowledge Library',
+      isFlashing: false,
+      ariaLabel: 'Open Knowledge Library'
+    },
+    {
+      id: 'section2',
+      image: impelLogo,
+      alt: 'Impel',
+      isFlashing: true,
+      ariaLabel: 'Visit Impel Interactive Platform'
+    },
+    {
+      id: 'section3',
+      image: hydroUBlue,
+      alt: 'Hydro University',
+      isFlashing: false,
+      ariaLabel: 'Learn about Hydro University'
+    },
+    {
+      id: 'section4',
+      image: centaurLogo,
+      alt: 'Centaur',
+      isFlashing: false,
+      ariaLabel: 'Explore Centaur Platform'
+    },
+    {
+      id: 'section5',
+      image: coPilotLogo,
+      alt: 'Hydro CoPilot',
+      isFlashing: false,
+      ariaLabel: 'Discover Hydro CoPilot'
+    },
+    {
+      id: 'section6',
+      image: energyLogo,
+      alt: 'Energy Edge',
+      isFlashing: false,
+      ariaLabel: 'Learn about Energy Edge'
+    }
+  ];
+
   return (
-    <div className={styles.menu}>
-      <MenuBox target="section1" onClick={handleBoxClick}>
-        <img src={coleherne} alt="Hydro University Logo" className={styles.overlayImage} />
-      </MenuBox>
-      <MenuBox target="section2" onClick={handleBoxClick} isFlashing={true}>
-        <img src={impelLogo} alt="Impel" className={styles.overlayImage} />
-      </MenuBox>
-      <MenuBox target="section3" onClick={handleBoxClick}>
-        <img src={hydroUBlue} alt="Hydro University Logo" className={styles.overlayImage} />
-      </MenuBox>
-      <MenuBox target="section4" onClick={handleBoxClick}>
-        <img src={centaurLogo} alt="Centaur" className={styles.overlayImage} />
-      </MenuBox>
-      <MenuBox target="section5" onClick={handleBoxClick}>
-        <img src={careers} alt="Careers" className={styles.overlayImage} />
-      </MenuBox>
-      <MenuBox target="section6" onClick={handleBoxClick}>
-        <img src={energyLogo} alt="Energy Edge" className={styles.overlayImage} />
-      </MenuBox>
-    </div>
+    <nav className={styles.menu} aria-label="Main Navigation">
+      {menuItems.map(item => (
+        <MenuBox 
+          key={item.id}
+          target={item.id} 
+          onClick={handleBoxClick} 
+          isFlashing={item.isFlashing}
+          ariaLabel={item.ariaLabel}
+        >
+          <img src={item.image} alt={item.alt} className={styles.overlayImage} />
+        </MenuBox>
+      ))}
+    </nav>
   );
 };
 

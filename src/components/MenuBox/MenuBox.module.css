@@ -1,70 +1,73 @@
 .box {
-    background-color: white;
-    padding: 0;
-    text-align: center;
-    font-size: 24px;
-    font-family: "Monaco", monospace;
-    color: #456da7;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    height: 200px;
-    width: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: var(--color-white);
+  padding: 0;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  font-family: var(--font-family-mono);
+  color: var(--color-primary);
+  border-radius: var(--radius-circle);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.box img {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 10%;
+  transition: filter var(--transition-normal);
+}
+
+.box:hover, .box:focus {
+  background-color: var(--color-secondary);
+  transform: translateY(-5px) rotate(-2deg);
+  box-shadow: var(--shadow-xl);
+  outline: none;
+}
+
+.box:hover img, .box:focus img {
+  filter: brightness(1.2);
+}
+
+/* Flashing text animation */
+@keyframes flash {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.flashingText {
+  animation: flash 2s infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: var(--breakpoint-laptop)) {
+  .box {
+    height: 180px;
+    width: 180px;
+    font-size: var(--font-size-lg);
   }
-  
-  .box img {
-    max-width: 80%;
-    max-height: 80%;
-    border-radius: 10%;
+}
+
+@media (max-width: var(--breakpoint-tablet)) {
+  .box {
+    height: 150px;
+    width: 150px;
+    font-size: var(--font-size-md);
   }
-  
-  .box:hover {
-    background-color: #3b5b9d;
-    transform: translateY(-5px) rotate(-2deg);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: var(--breakpoint-phone)) {
+  .box {
+    height: 120px;
+    width: 120px;
+    font-size: var(--font-size-base);
   }
-  
-  .box:hover img {
-    filter: brightness(1.2);
-  }
-  
-  /* Flashing text animation */
-  @keyframes flash {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
-  }
-  
-  .flashingText {
-    animation: flash 2s infinite;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 1440px) {
-    .box {
-      height: 180px;
-      width: 180px;
-      font-size: 22px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .box {
-      height: 150px;
-      width: 150px;
-      font-size: 18px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .box {
-      height: 120px;
-      width: 120px;
-      font-size: 16px;
-    }
-  }
+}

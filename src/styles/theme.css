@@ -1,0 +1,90 @@
+:root {
+  /* Color Palette */
+  --color-primary: #456da7;
+  --color-primary-dark: #3a5d91;
+  --color-primary-darker: #2e3c5d;
+  --color-secondary: #3b5b9d;
+  --color-accent: #003366;
+  --color-white: #ffffff;
+  --color-off-white: #e0e6f6;
+  --color-black: #000000;
+  --color-gray-light: #f5f5f5;
+  --color-gray: #cccccc;
+  --color-gray-dark: #333333;
+  
+  /* Typography */
+  --font-family-primary: 'Arial', sans-serif;
+  --font-family-secondary: 'Segoe UI', Arial, sans-serif;
+  --font-family-mono: "Monaco", monospace;
+  
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-md: 1.125rem;   /* 18px */
+  --font-size-lg: 1.25rem;    /* 20px */
+  --font-size-xl: 1.5rem;     /* 24px */
+  --font-size-2xl: 2rem;      /* 32px */
+  --font-size-3xl: 2.5rem;    /* 40px */
+  
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  
+  /* Spacing */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 20px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+  --space-4xl: 64px;
+  
+  /* Borders */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 18px;
+  --radius-pill: 50px;
+  --radius-circle: 50%;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --shadow-2xl: 0 12px 40px rgba(0, 0, 0, 0.25);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* Z-indices */
+  --z-index-dropdown: 100;
+  --z-index-sticky: 200;
+  --z-index-fixed: 500;
+  --z-index-modal-backdrop: 900;
+  --z-index-modal: 1000;
+  --z-index-tooltip: 1500;
+  
+  /* Breakpoints */
+  --breakpoint-phone: 480px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-laptop: 1440px;
+  --breakpoint-desktop: 1441px;
+}
+
+/* A11y - Focus styles */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Dark mode - for future implementation */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark mode theme variables would go here */
+  }
+}

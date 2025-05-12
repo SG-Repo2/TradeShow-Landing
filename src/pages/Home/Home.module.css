@@ -89,3 +89,85 @@
     max-height: 180px;
     object-fit: contain;
   }
+
+  /* Energy Edge bullet list styles */
+  .energyBulletList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .energyBulletItem {
+    padding-left: 35px;
+    position: relative;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+  }
+
+  .energyBulletIcon {
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+  }
+
+  /* Energy Edge modal hero image and layout */
+  .energyHeroContainer {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  .energyHeroImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .energyEdgeWallpaper {
+    position: relative;
+    max-width: 300px;
+    height: auto;
+    margin-left: 25px;
+    margin-top: 100px;
+    display: block;
+  }
+
+  /* Energy Edge modal background styling */
+  .energyModalContent {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .energyBackgroundWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: -1;
+  }
+
+  .energyBackgroundImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9; /* Adjust opacity to ensure content remains readable */
+  }
+
+  .energyContentOverlay {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }

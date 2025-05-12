@@ -4,75 +4,46 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Home.module.css';
 import Logo from '../../components/Logo/Logo';
 import Menu from '../../components/Menu/Menu';
-import Content from '../../components/Content/Content';
 import Modal from '../../components/Modal/Modal';
 
-// Import correct images from assets
-import coleherneLogo from '../../assets/coleherneLogo.png';
-import careers from '../../assets/careers.png';
-import energyLogo from '../../assets/energyLogo.png';
-import tradeShowQR from '../../assets/tradeShowQR.png';
-import centaurEcosystem from '../../assets/centaurEcosystem.png';
-import hydroULogo from '../../assets/hydroU.png';
+// Import from centralized asset directory
+import { 
+  coPilotLogo,
+  energyEdgeWallpaper,
+  energyBolt,
+  tradeShowQR,
+  centaurEcosystem,
+  hydroULogo,
+  energyBackground
+} from '../../assets';
 
-const Home: React.FC = () => {
-  const [activeSection] = useState<string | null>(null);
-  
-  // State for all modals
-  const [showSection1Modal, setShowSection1Modal] = useState(false);
-  const [showSection3Modal, setShowSection3Modal] = useState(false);
-  const [showSection4Modal, setShowSection4Modal] = useState(false);
-  const [showSection5Modal, setShowSection5Modal] = useState(false);
-  const [showSection6Modal, setShowSection6Modal] = useState(false);
-  
+// Define modal content type for consistent rendering
+interface ModalContent {
+  id: string;
+  title: string;
+  content: JSX.Element;
+  compact?: boolean;
+}
+
+const Home: React.FC = () => {  
+  // Single state for active modal instead of separate states
+  const [activeModalId, setActiveModalId] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const handleOmanTabletAppClick = () => {
-    navigate('/oman-tablet');
+  // Close any open modal
+  const handleCloseModal = () => {
+    setActiveModalId(null);
   };
 
-  return (
-    <div className={styles.container}>
-      <Logo />
-      <Menu 
-        onSection1Click={() => setShowSection1Modal(true)}
-        onSection2Click={() => navigate('/impel')}
-        onSection3Click={() => setShowSection3Modal(true)}
-        onSection4Click={() => setShowSection4Modal(true)}
-        onSection5Click={() => setShowSection5Modal(true)}
-        onSection6Click={() => setShowSection6Modal(true)}
-      />
-      {activeSection && <Content activeSection={activeSection} />}
-
-      {/* Section 1 Modal - Knowledge Library (Menu Modal) */}
-      {showSection1Modal && (
-        <Modal onClose={() => setShowSection1Modal(false)}>
-          <h2>Knowledge Library</h2>
-          <img src={coleherneLogo} alt="Knowledge Library" className={styles.modalImage} />
-          <p>Quickly search our entire knowledge base...</p>
-          <div className={styles.buttons}>
-            <button className={styles.button} onClick={handleOmanTabletAppClick}>
-              Search Library
-            </button>
-            <button className={styles.button}>
-              Filter by Topic
-            </button>
-            <button className={styles.button}>
-              Download PDF
-            </button>
-            <button className={styles.button}>
-              Watch Tutorial
-            </button>
-          </div>
-        </Modal>
-      )}
-
-      {/* Section 3 Modal - Hydro University (Compact Modal with QR) */}
-      {showSection3Modal && (
-        <Modal onClose={() => setShowSection3Modal(false)} compact={true}>
-          <h2>Hydro University</h2>
-          
-          {/* Primary focus on the Hydro University logo */}
+  // Definition of all modal contents
+  const modalContents: Record<string, ModalContent> = {
+    // Section1 modal content is no longer needed as we navigate directly
+    section3: {
+      id: 'section3',
+      title: 'Hydro University',
+      compact: true,
+      content: (
+        <>
           <div className={styles.ecosystemContainer}>
             <img 
               src={hydroULogo}
@@ -87,15 +58,15 @@ const Home: React.FC = () => {
             <img src={tradeShowQR} alt="QR Code" className={styles.qrImage} />
             <p>Scan to access Hydro University</p>
           </div>
-        </Modal>
-      )}
-
-      {/* Section 4 Modal - Centaur Platform (Compact Modal with QR) */}
-      {showSection4Modal && (
-        <Modal onClose={() => setShowSection4Modal(false)} compact={true}>
-          <h2>Centaur Platform</h2>
-          
-          {/* Primary focus on the ecosystem diagram */}
+        </>
+      )
+    },
+    section4: {
+      id: 'section4',
+      title: 'Centaur Platform',
+      compact: true,
+      content: (
+        <>
           <div className={styles.ecosystemContainer}>
             <img 
               src={centaurEcosystem}
@@ -110,36 +81,111 @@ const Home: React.FC = () => {
             <img src={tradeShowQR} alt="QR Code" className={styles.qrImage} />
             <p>Scan to access Centaur Platform</p>
           </div>
-        </Modal>
-      )}
-
-      {/* Section 5 Modal - Careers (Compact Modal with QR) */}
-      {showSection5Modal && (
-        <Modal onClose={() => setShowSection5Modal(false)} compact={true}>
-          <h2>Careers</h2>
+        </>
+      )
+    },
+    section5: {
+      id: 'section5',
+      title: 'Hydro CoPilot',
+      compact: true,
+      content: (
+        <>
           <div className={styles.modalImages}>
-            <img src={careers} alt="Careers" className={styles.contentImage} />
+            <img src={coPilotLogo} alt="Hydro CoPilot" className={styles.contentImage} />
           </div>
-          <p>Explore career opportunities with Hydro</p>
+          <p>Introducing Hydro CoPilot – Your AI-Powered Pump Intelligence Assistant</p>
+          
           <div className={styles.qrCodeContainer}>
             <img src={tradeShowQR} alt="QR Code" className={styles.qrImage} />
-            <p>Scan to view job openings</p>
+            <p>Scan to access Hydro CoPilot</p>
           </div>
-        </Modal>
-      )}
-
-      {/* Section 6 Modal - Energy Edge (Compact Modal with QR) */}
-      {showSection6Modal && (
-        <Modal onClose={() => setShowSection6Modal(false)} compact={true}>
-          <h2>Energy Edge</h2>
-          <div className={styles.modalImages}>
-            <img src={energyLogo} alt="Energy Edge" className={styles.contentImage} />
+        </>
+      )
+    },
+    section6: {
+      id: 'section6',
+      title: 'Energy Edge',
+      compact: true,
+      content: (
+        <div className={styles.energyModalContent}>
+          <div className={styles.energyBackgroundWrapper}>
+            <img                      
+              src={energyBackground} 
+              alt="Energy background" 
+              className={styles.energyBackgroundImage} 
+            />
           </div>
-          <p>Learn about our energy efficiency solutions</p>
+          
+          <img 
+            src={energyEdgeWallpaper} 
+            alt="Energy Edge" 
+            className={styles.energyEdgeWallpaper} 
+          />
+          
+          <div className={styles.energyContentOverlay}>
+            <h2>Energy Edge</h2>
+            <p>Hydro Energy Edge combines our comprehensive services into a customized program that identifies opportunities for energy savings and supports end users in achieving their reliability and sustainability
+            goals.</p>
+            
+            <h3>Some of the services available as part of the Hydro Energy Edge program include:</h3>
+            <ul className={styles.energyBulletList}>
+              <li className={styles.energyBulletItem}>
+                <span className={styles.energyBulletIcon} style={{ backgroundImage: `url(${energyBolt})` }}></span>
+                <span>Energy Audits Through Field Testing</span>
+              </li>
+              <li className={styles.energyBulletItem}>
+                <span className={styles.energyBulletIcon} style={{ backgroundImage: `url(${energyBolt})` }}></span>
+                <span>Comprehensive System Analysis</span>
+              </li>
+              <li className={styles.energyBulletItem}>
+                <span className={styles.energyBulletIcon} style={{ backgroundImage: `url(${energyBolt})` }}></span>
+                <span>Hydraulic Modifications to Optimize Performance and Energy Usage</span>
+              </li>
+              <li className={styles.energyBulletItem}>
+                <span className={styles.energyBulletIcon} style={{ backgroundImage: `url(${energyBolt})` }}></span>
+                <span>Upgraded Tolerances and Materials</span>
+              </li>
+              <li className={styles.energyBulletItem}>
+                <span className={styles.energyBulletIcon} style={{ backgroundImage: `url(${energyBolt})` }}></span>
+                <span>Certified Performance Testing</span>
+              </li>
+              <li className={styles.energyBulletItem}>
+                <span className={styles.energyBulletIcon} style={{ backgroundImage: `url(${energyBolt})` }}></span>
+                <span>Continuous Performance and Reliability Monitoring</span>
+              </li>
+            </ul>
+          </div>
+          
           <div className={styles.qrCodeContainer}>
             <img src={tradeShowQR} alt="QR Code" className={styles.qrImage} />
             <p>Scan for Energy Edge information</p>
           </div>
+        </div>
+      )
+    }
+  };
+
+  return (
+    <div className={styles.container}>
+      <Logo />
+      
+      <Menu 
+        onSection1Click={() => navigate('/oman-tablet')}
+        onSection2Click={() => navigate('/impel')}
+        onSection3Click={() => setActiveModalId('section3')}
+        onSection4Click={() => setActiveModalId('section4')}
+        onSection5Click={() => setActiveModalId('section5')}
+        onSection6Click={() => setActiveModalId('section6')}
+      />
+
+      {/* Single Modal component that changes content based on activeModalId */}
+      {activeModalId && modalContents[activeModalId] && (
+        <Modal 
+          onClose={handleCloseModal}
+          compact={modalContents[activeModalId].compact}
+          title={modalContents[activeModalId].title}
+        >
+          {modalContents[activeModalId].content}
         </Modal>
       )}
     </div>

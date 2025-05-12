@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Logo.module.css';
-import hydroLogo from '../../assets/hydroLogo.gif';
+import { hydroLogo } from '../../assets';
 
 const Logo: React.FC = () => {
   return (

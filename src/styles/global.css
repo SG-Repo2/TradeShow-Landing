@@ -1,36 +1,99 @@
+@import './theme.css';
+
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  background-color: var(--color-primary);
+  color: var(--color-gray-dark);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: var(--space-md);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: var(--font-size-2xl);
+  color: var(--color-accent);
+}
+
+h2 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-md);
+}
+
+h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-sm);
+}
+
+p {
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size-base);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Fluid typography based on viewport width */
+@media (max-width: var(--breakpoint-phone)) {
+  html {
+    font-size: 14px;
   }
-  
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #456da7;
-    overflow: hidden;
+}
+
+@media (min-width: calc(var(--breakpoint-phone) + 1px)) and (max-width: var(--breakpoint-tablet)) {
+  html {
+    font-size: 16px;
   }
-  
-  /* Fluid typography based on viewport width */
-  @media (max-width: 480px) {
-    html {
-      font-size: 14px;
-    }
+}
+
+@media (min-width: calc(var(--breakpoint-tablet) + 1px)) and (max-width: var(--breakpoint-laptop)) {
+  html {
+    font-size: 18px;
   }
-  
-  @media (min-width: 481px) and (max-width: 768px) {
-    html {
-      font-size: 16px;
-    }
+}
+
+@media (min-width: calc(var(--breakpoint-laptop) + 1px)) {
+  html {
+    font-size: 20px;
   }
-  
-  @media (min-width: 769px) and (max-width: 1440px) {
-    html {
-      font-size: 18px;
-    }
-  }
-  
-  @media (min-width: 1441px) {
-    html {
-      font-size: 20px;
-    }
-  }
+}
