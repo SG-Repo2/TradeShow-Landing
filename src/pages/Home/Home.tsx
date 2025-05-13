@@ -14,7 +14,8 @@ import {
   tradeShowQR,
   centaurEcosystem,
   hydroULogo,
-  energyBackground
+  energyBackground,
+  coleherneLogo
 } from '../../assets';
 
 // Define modal content type for consistent rendering
@@ -37,7 +38,34 @@ const Home: React.FC = () => {
 
   // Definition of all modal contents
   const modalContents: Record<string, ModalContent> = {
-    // Section1 modal content is no longer needed as we navigate directly
+    // Section1 modal content with four placeholder buttons
+    section1: {
+      id: 'section1',
+      title: 'Knowledge Library',
+      content: (
+        <>
+          <div className={styles.modalImages}>
+            <img src={coleherneLogo} alt="Knowledge Library" className={styles.contentImage} />
+          </div>
+          <p>Access our comprehensive knowledge library resources</p>
+          
+          <div className={styles.buttons}>
+            <button className={styles.button} onClick={() => navigate('/oman-tablet')}>
+              Timeline to Refurbish
+            </button>
+            <button className={styles.button}>
+              Generator BRG
+            </button>
+            <button className={styles.button}>
+              LMAS
+            </button>
+            <button className={styles.button}>
+              About Coleherne
+            </button>
+          </div>
+        </>
+      )
+    },
     section3: {
       id: 'section3',
       title: 'Hydro University',
@@ -170,7 +198,7 @@ const Home: React.FC = () => {
       <Logo />
       
       <Menu 
-        onSection1Click={() => navigate('/oman-tablet')}
+        onSection1Click={() => setActiveModalId('section1')}
         onSection2Click={() => navigate('/impel')}
         onSection3Click={() => setActiveModalId('section3')}
         onSection4Click={() => setActiveModalId('section4')}
