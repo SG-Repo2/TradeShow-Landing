@@ -9,7 +9,7 @@ import {
   centaurLogo, 
   coPilotLogo, 
   energyLogo 
-} from '../../assets';
+} from '../../../../assets';
 
 interface MenuProps {
   onSection1Click?: () => void;

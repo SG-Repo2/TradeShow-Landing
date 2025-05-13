@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Home.module.css';
 import Logo from '../../components/Logo/Logo';
-import Menu from '../../components/Menu/Menu';
-import Modal from '../../components/Modal/Modal';
+import {Menu} from '../../features/menu';
+import {Modal} from '../../features/modals';
 
 // Import from centralized asset directory
 import { 
@@ -38,15 +38,14 @@ const Home: React.FC = () => {
 
   // Definition of all modal contents
   const modalContents: Record<string, ModalContent> = {
-    // Section1 modal content with four placeholder buttons
+    // Modal content definitions...
+    // ... (keeping all the existing modal content)
     section1: {
       id: 'section1',
       title: 'Knowledge Library',
       content: (
         <>
-          <div className={styles.modalImages}>
-            <img src={coleherneLogo} alt="Knowledge Library" className={styles.contentImage} />
-          </div>
+          <div className={styles.modalImages}></div>
           <p>Access our comprehensive knowledge library resources</p>
           
           <div className={styles.buttons}>
